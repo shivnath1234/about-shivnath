@@ -1,242 +1,114 @@
+# Create the necessary directory structure for a 4-page website template
+import os
+
+base_path = "/mnt/data/BusinessWebsiteTemplate"
+pages = ["index.html", "about.html", "services.html", "contact.html"]
+css_path = os.path.join(base_path, "css")
+images_path = os.path.join(base_path, "images")
+js_path = os.path.join(base_path, "js")
+
+# Create folders
+os.makedirs(css_path, exist_ok=True)
+os.makedirs(images_path, exist_ok=True)
+os.makedirs(js_path, exist_ok=True)
+
+# HTML Template for the pages
+html_template = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shivnath Dey - Forex Trading & Financial Solutions</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #1a1a1a;
-            color: white;
-            scroll-behavior: smooth;
-        }
-        header {
-            background: #003366;
-            padding: 3rem 2rem;
-            text-align: center;
-            color: white;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        header h1 {
-            font-size: 3rem;
-            margin: 0;
-        }
-        header p {
-            font-size: 1.2rem;
-            margin-top: 1rem;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            background: #004080;
-            padding: 1rem;
-            position: sticky;
-            top: 0;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 1.5rem;
-            font-size: 1.2rem;
-            transition: color 0.3s;
-        }
-        nav a:hover {
-            color: #00ccff;
-        }
-        .hero {
-            text-align: center;
-            padding: 4rem 2rem;
-            background: url("https://source.unsplash.com/1600x900/?finance,trade") no-repeat center center;
-            background-size: cover;
-            color: white;
-            text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
-        }
-        .hero h2 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-        }
-        .hero p {
-            font-size: 1.4rem;
-            margin-bottom: 2rem;
-        }
-        .hero button {
-            padding: 1rem 2rem;
-            font-size: 1.1rem;
-            background: #00ccff;
-            border: none;
-            border-radius: 5px;
-            color: white;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .hero button:hover {
-            background: #007bb5;
-        }
-        .section {
-            text-align: center;
-            margin: 2rem;
-        }
-        .about, .skills, .contact {
-            text-align: center;
-            margin: 2rem auto;
-            max-width: 1000px;
-        }
-        .about p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-        }
-        .skills ul {
-            list-style: none;
-            padding: 0;
-            font-size: 1.1rem;
-            text-align: left;
-            margin-top: 1rem;
-        }
-        .skills li {
-            margin: 0.5rem 0;
-        }
-        .contact-form {
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 1.5rem;
-            background: #00264d;
-            border-radius: 10px;
-        }
-        .contact-form input, .contact-form textarea {
-            width: 100%;
-            margin-bottom: 1rem;
-            padding: 0.8rem;
-            border: 1px solid #00ccff;
-            border-radius: 5px;
-            background: #001122;
-            color: white;
-        }
-        .contact-form button {
-            width: 100%;
-            padding: 1rem;
-            background: #00ccff;
-            border: none;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        footer {
-            text-align: center;
-            padding: 2rem 0;
-            background: #003366;
-            color: #00ccff;
-        }
-        footer .socials a {
-            color: #00ccff;
-            margin: 0 1rem;
-            font-size: 1.5rem;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        footer .socials a:hover {
-            color: white;
-        }
-
-        /* Chart responsiveness */
-        .live-chart {
-            text-align: center;
-            margin: 2rem 0;
-        }
-        .chart-wrapper {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            height: 0;
-            overflow: hidden;
-        }
-        .chart-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        @media (max-width: 768px) {
-            .hero h2 {
-                font-size: 2.5rem;
-            }
-            .hero p {
-                font-size: 1rem;
-            }
-            nav a {
-                font-size: 1rem;
-            }
-        }
-    </style>
+    <title>{title}</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header>
-        <h1>Shivnath Dey - Forex Trading Expert</h1>
-        <p>Delivering tailored solutions to traders, banks, and institutions worldwide.</p>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
     </header>
-    <nav>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#chart">Live Chart</a>
-        <a href="#contact">Contact</a>
-    </nav>
-    <div class="hero">
-        <h2>Maximize Your Forex Trading Potential</h2>
-        <p>Expert insights and strategies to empower your financial decisions.</p>
-        <button>Get Started</button>
-    </div>
-
-    <section id="about" class="about">
-        <h2>About Shivnath</h2>
-        <p>Hi, I'm Shivnath! I'm passionate about technology and always looking for creative solutions to everyday problems. With expertise in coding and a deep interest in game development and blockchain, I'm constantly improving and exploring new ideas. Let's build the future together!</p>
-    </section>
-
-    <section id="skills" class="skills">
-        <h2>Skills</h2>
-        <p>I specialize in several areas, including:</p>
-        <ul>
-            <li>Programming Languages: Java, C++, Python</li>
-            <li>Web Development: Full-stack development</li>
-            <li>Blockchain: Smart contracts and decentralized apps</li>
-            <li>Game Development: Unity, Minecraft Modding</li>
-            <li>Trading: Forex and Crypto Trading</li>
-            <li>AI and Machine Learning: Implementing intelligent solutions</li>
-        </ul>
-    </section>
-
-    <section id="chart" class="live-chart">
-        <h2>Live EUR/USD Chart</h2>
-        <p>View the real-time chart with replay functionality to analyze historical data.</p>
-        <div class="chart-wrapper">
-            <iframe 
-                src="https://www.tradingview.com/widgetembed/?symbol=FX:EURUSD&interval=1&theme=dark&style=1&studies=MACD%40tv-basicstudies&toolbarbg=F1F3F6&saveimage=1&hideideas=1" 
-                frameborder="0" allowfullscreen></iframe>
-        </div>
-    </section>
-
-    <section id="contact" class="contact">
-        <h2>Contact Shivnath Dey</h2>
-        <form class="contact-form">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message" rows="5" required></textarea>
-            <button type="submit">Send</button>
-        </form>
-    </section>
-
+    <main>
+        <h1>{heading}</h1>
+        <p>{content}</p>
+    </main>
     <footer>
-        <p>© 2024 Shivnath Dey | All Rights Reserved</p>
-        <div class="socials">
-            <a href="#">LinkedIn</a>
-            <a href="#">Twitter</a>
-            <a href="#">Instagram</a>
-        </div>
+        <p>&copy; 2024 Your Choices. All Rights Reserved.</p>
     </footer>
 </body>
 </html>
+"""
+
+# Page-specific content
+page_contents = {
+    "index.html": ("Home", "Welcome to Your Choices", "Explore our world-class solutions tailored for businesses."),
+    "about.html": ("About Us", "Who We Are", "Learn more about our mission, vision, and values."),
+    "services.html": ("Services", "What We Offer", "Discover the range of services we provide to meet your needs."),
+    "contact.html": ("Contact", "Get in Touch", "Reach out to us for inquiries or support."),
+}
+
+# Write HTML files
+for page, (title, heading, content) in page_contents.items():
+    with open(os.path.join(base_path, page), "w") as file:
+        file.write(html_template.format(title=title, heading=heading, content=content))
+
+# CSS Template
+css_content = """
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 10px 20px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+"""
+
+# Write CSS file
+with open(os.path.join(css_path, "style.css"), "w") as file:
+    file.write(css_content)
+
+# Output directory path for next steps
+base_path
